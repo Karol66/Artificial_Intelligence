@@ -76,7 +76,10 @@ public class TicTacToePlus {
                 int row = scanner.nextInt();
                 System.out.print("Podaj kolumnę (0-2): ");
                 int col = scanner.nextInt();
-                if (board[row][col] != '-') {
+                if (row < 0 || row > 2 || col < 0 || col > 2) {
+                    System.out.println("Nieprawidłowe wartości! Wprowadź wartości od 0 do 2");
+                    humanMove();
+                } else if (board[row][col] != '-') {
                     System.out.println("Niedozwolony ruch! Sprubój ponownie ");
                     humanMove();
                 } else {
@@ -88,7 +91,10 @@ public class TicTacToePlus {
                 int fromRow = scanner.nextInt();
                 System.out.print("Wprowadź kolumnę symbolu, który chcesz przenieść (0-2): ");
                 int fromCol = scanner.nextInt();
-                if (board[fromRow][fromCol] != human) {
+                if (fromRow < 0 || fromRow > 2 || fromCol < 0 || fromCol > 2) {
+                    System.out.println("Nieprawidłowe wartości! Wprowadź wartości od 0 do 2");
+                    humanMove();
+                } else if (board[fromRow][fromCol] != human) {
                     System.out.println("Niedozwolony ruch! Możesz poruszać tylko swoje własne symbole");
                     humanMove();
                 } else {
@@ -96,11 +102,14 @@ public class TicTacToePlus {
                     int toRow = scanner.nextInt();
                     System.out.print("Wprowadź kolumnę do, której chcesz przenieść swój symbol (0-2): ");
                     int toCol = scanner.nextInt();
-                    if (board[toRow][toCol] != '-') {
+                    if (toRow < 0 || toRow > 2 || toCol < 0 || toCol > 2) {
+                        System.out.println("Nieprawidłowe wartości! Wprowadź wartości od 0 do 2");
+                        humanMove();
+                    } else if (board[toRow][toCol] != '-') {
                         System.out.println("Niedozwolony ruch! Komórka docelowa jest już zajęta");
                         humanMove();
                     } else if ((fromRow - toRow > 1) || (fromCol - toCol > 1)) {
-                        System.out.println("Niedozwolony ruch! Możesz przesuwać swój symbol o jedno polle w pionie lub poziomie");
+                        System.out.println("Niedozwolony ruch! Możesz przesuwać swój symbol o jedno pole w pionie lub poziomie");
                         humanMove();
                     } else if ((fromRow != toRow) && (fromCol != toCol)) {
                         System.out.println("Niedozwolony ruch! Możesz przesuwać swój symbol tylko poziomo lub pionowo");
@@ -275,7 +284,8 @@ public class TicTacToePlus {
         if (result != 0) {
             return result;
         }
-        if (isBoardFull() || movesNumber >= 2) {
+        // Liczba przsunięć do jakich analizowane jest drzewo (2 gracza(human) 2 komputeraz(computer))
+        if (isBoardFull() || movesNumber >= 4) {
             return 0;
         }
 
@@ -477,9 +487,6 @@ public class TicTacToePlus {
                             } else if (checkWin(computer)) {
                                 System.out.println("Wygrał O");
                             }
-                        }
-                        if (realMovesNumber >= 5) {
-                            System.out.println("hhbashcbjhascj");
                         }
                         realMovesNumber++;
                     }
