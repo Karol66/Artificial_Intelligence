@@ -284,7 +284,7 @@ public class TicTacToePlus {
         if (result != 0) {
             return result;
         }
-        // Liczba przsunięć do jakich analizowane jest drzewo (2 gracza(human) 2 komputeraz(computer))
+                             // Liczba przsunięć do jakich analizowane jest drzewo (2 gracza(human) 2 komputeraz(computer))
         if (isBoardFull() || movesNumber >= 4) {
             return 0;
         }
