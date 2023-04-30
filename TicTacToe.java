@@ -92,7 +92,7 @@ public class TicTacToe2 {
                 if (board[i][0] == computer) {
                     score = score + 10;
                     break;
-                } else {
+                } else if (board[i][0] == human){
                     score = score - 10;
                     break;
                 }
@@ -116,7 +116,7 @@ public class TicTacToe2 {
         if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             if (board[0][0] == computer) {
                 score = score + 10;
-            } else {
+            } else if (board[0][0] == human){
                 score = score - 10;
             }
         }
@@ -124,7 +124,7 @@ public class TicTacToe2 {
         if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
             if (board[0][2] == computer) {
                 score = score + 10;
-            } else {
+            } else if (board[0][2] == human) {
                 score = score - 10;
             }
         }
